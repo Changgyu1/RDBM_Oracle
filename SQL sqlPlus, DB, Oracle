@@ -1,0 +1,15 @@
+SQL(Structured Query Language)
+  데이터베이스 관리 시스템과 상호작용 하기 위해 설계된 프로그래밍 언어
+  데이터를 관리하고 조작하는데 사용
+
+SqlPlus
+  Oracle DataBase와 상호작용 하기 위한 명령줄 인터페이스(CLI) 도구
+  SQL 문장을 실행하고 데이터베이스 객체를 관리할 수 있음
+
+예제 명령문 :
+  (만약 sqlplus로 들어가게 되면 초기에 사용자 이름은 system(최고관리자) 이다.)
+  sqlplus 사용자이름/사용자비밀번호
+
+  sqlplus 사용자이름/사용자비밀번호@데이터베이스주소:포트번호/서비스명
+
+Oracle : 데이터베이스 관리 시스템을 제공, IT 기업 이외 Mysql,SqlLite, MariaDB 등 다양한 종류 중 하나
