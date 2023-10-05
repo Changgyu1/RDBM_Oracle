@@ -1,0 +1,5 @@
+sql 문을 가져와야 할 때
+명령어
+  sqlplus 사용자이름/사용자비밀번호
+  @@sql이 들어있는 주소(위치)\sql파일이름.sql
+  ex)@@C:\Users\user1\Desktop\EMP_EXAMPLE.sql
