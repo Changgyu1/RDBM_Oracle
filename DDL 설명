@@ -1,9 +1,22 @@
-DDL (Data Definition Language)
-
+DDL (Data Definition Language / 데이터정의)
+- 데이터의 스키마 객체를 생성 변경 제거 하거나 권한의 부여나 박탈 주석 자료버림등을 수행
 - 데이터베이스 구조를 정의하고 관리
 - 객체를 생성, 수정, 삭제
 대표적인 명령문
-CREATE(생성), ALTER(수정), DROP(삭제), COMMENT(주석), GRANT(권한 부여)
+CREATE(생성), ALTER(수정), DROP(삭제), COMMENT(주석), GRANT(권한 부여), REVOKE(권한 제거), TRUNCATE(자료 버림)
+
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+  Oracle DataBase에서 "_ORACLE_SCRIPT" 모드 활성화 / 12C 이상 버전에서 사용할 수 있는 특별한 모드
+
+SESSION(세션):
+  컴퓨터 네트워크 분야에서 사용되는 용어 사용자 또는 클라이언트 서버 간의 연결을 나타냄
+  데이터베이스는 사용자 또는 응용 프로그램이 데이터 베이스 서버에 연결하고 상호작용 하는 동안 작업의 단위 의미
+  각 세션은 독립적은 환경을 가지며, 데이터베이스 서버와 통신을 담당
+
+SET(설정):
+  설정 또는 조정하는데 사용
+  변수 설정 : 변수값을 설정하거나 변경하는데 사용
+  EX) SET Salary(변수) = 5000; / 변수를 5000으로 설정하는것을 의미
 
 CREATE(생성):
   CREATE TABLE : 새로운 테이블 생성
