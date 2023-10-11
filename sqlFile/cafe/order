@@ -1,0 +1,78 @@
+CREATE TABLE orders(
+order_id NUMBER PRIMARY KEY,
+cafe_id NUMBER,
+menu_id NUMBER,
+order_date TIMESTAMP,
+quantity NUMBER,
+total_price NUMBER
+);
+--외래 키 제약 조건 추가
+ALTER TABLE orders ADD
+    CONSTRAINT fk_orders_cafe
+    FOREIGN KEY (cafe_id)
+    REFERENCES cafes(cafe_id);
+    
+ALTER TABLE orders ADD
+    CONSTRAINT fk_orders_menu
+    FOREIGN KEY (menu_id)
+    REFERENCES menu(menu_id);
+    
+-- 테이블 코멘트 추가
+COMMENT ON TABLE orders IS '주문 정보를 저장하는 테이블';
+
+-- 열 코멘트 추가
+COMMENT ON COLUMN orders.order_id IS '주문을 고유하게 식별하는 번호';
+COMMENT ON COLUMN orders.cafe_id IS '주문이 발생한 카페의 ID';
+COMMENT ON COLUMN orders.menu_id IS '주문한 메뉴 항목의 아이디';
+COMMENT ON COLUMN orders.order_date IS '주문이 발생한 날짜와 시간';
+COMMENT ON COLUMN orders.quantity IS '주문한 메뉴 항목의 수량';
+COMMENT ON COLUMN orders.total_price IS '주문 총 금액';
+
+-- 첫 번째 주문 / 주문 테이블 추가
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (1, 1, 1, TIMESTAMP'2023-10-11 14:30:00', 2, 7.00);
+
+
+SELECT o.order_id, c.name, m.mname, m.price, o.quantity, o.total_price
+FROM orders o
+JOIN cafes c ON c.cafe_id = o.cafe_id
+JOIN menu m ON m.menu_id = o.menu_id
+WHERE o.order_id = 2;
+
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (2, 2, 2, TIMESTAMP'2023-10-11 14:30:00', 3, 12.00);
+
+-- 주문 3
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (3, 3, 4, TIMESTAMP '2023-10-11 10:00:00', 1, 4.50);
+-- 주문 4
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (4, 5, 6, TIMESTAMP '2023-10-11 17:15:00', 2, 10.00);
+--주문 5
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (5, 8, 8, TIMESTAMP '2023-10-11 16:30:00', 3, 11.25);
+--  주문 6
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (6, 10, 11, TIMESTAMP '2023-10-11 15:45:00', 1, 4.25);
+-- 주문 7
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (7, 11, 12, TIMESTAMP '2023-10-11 13:15:00', 2, 10.00);
+-- 주문 8
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (8, 13, 14, TIMESTAMP '2023-10-11 11:00:00', 4, 18.00);
+-- 주문 9
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (9, 14, 7, TIMESTAMP '2023-10-11 18:30:00', 2, 9.00);
+-- 주문 10
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (10, 16, 3, TIMESTAMP '2023-10-11 19:45:00', 1, 4.50);
+
+SELECT
+	--주문 번호 --카페이름              --메뉴이름
+	o.order_id, c.name AS cafe_name, m.mname ,
+	--메뉴가격   --총수량     --총금액
+	m.price,    o.quantity, o.total_price
+FROM ORDERS o
+JOIN cafes c ON o.cafe_id = c.cafe_id
+JOIN menu m ON o.menu_id = m.menu_id
+WHERE o.order_id = 3;
