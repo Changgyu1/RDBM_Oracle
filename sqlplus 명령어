@@ -1,0 +1,41 @@
+SQL sqlPlus, DB, Oracle
+
+SQL (Structured Query Language)
+ 데이터베이스 관리 시스템 상호작용 하기 위해 설계된 프로그래밍 언어
+ 데이터를 관리하고 조작하는데 사용
+
+SqlPlus 
+   Oracle DataBase와 상호작용 하기 위한 명령줄 인터페이스(CLI) 도구
+  SQL 문장을 실행하고 데이터베이스 객체를 관리학 수 있음
+
+예제 명령문 : 
+  sqlplus 
+   ( 만약 sqlplus로 들어가게 되면 초기에 사용자 이름은 system 이다.)
+
+  sqlplus 사용자이름/사용자비밀번호
+  
+  sqlplus 사용자이름/사용자비밀번호@데이터베이스주소:포트번호/서비스명
+
+오라클 : 데이터베이스 관리 시스템을 제공, IT 기업
+  이외 MySql, SqlLite, MariaDB 등 다양한 종류 중 하나
+
+
+##SQL 명령어 ###
+sqlplus sys/oracle as sysdba
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+CREATE USER manage IDENTIFIED BY msg1234;
+GRANT CREATE SESSION TO manage;
+GRANT CREATE ANY TABLE TO manage;
+grant connect, resource, dba to manage;
+
+
+만약 manage 계정 접속하고 싶다면 : sqlplus  manage/msg1234 
+또는 연결 변경 : conn 사용자명/비밀번호 (관리자 로그인 시 as sysdba)
+
+sql 문을 가져와야 할 때
+
+명령어 
+ sqlplus 사용자이름/사용자비밀번호
+ @@sql들어있는주소(위치)\sql파일이름.sql
+ 예시 ) @@C:\Users\user1\Desktop\EMP_EXAMPLE.sql
