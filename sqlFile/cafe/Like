@@ -1,0 +1,121 @@
+CREATE TABLE menu(
+    menu_id INT PRIMARY KEY,
+    cafe_id INT,
+    mname VARCHAR2(255) NOT NULL,
+    price NUMBER(8, 2) NOT NULL,
+    CONSTRAINT fk_cafe
+        FOREIGN KEY (cafe_id)
+        REFERENCES cafes(cafe_id)
+);
+
+INSERT INTO menu (menu_id,cafe_id,mname,price)
+VALUES (1, 1, '에스프레소', 3.50);
+
+INSERT INTO menu (menu_id,cafe_id,mname,price)
+VALUES (2, 2, '카라멜마끼야또', 4.00);
+
+INSERT INTO menu (menu_id,cafe_id,mname,price)
+VALUES (3, 3, '아메리카노', 3.00);
+
+INSERT INTO menu (menu_id,cafe_id,mname,price)
+VALUES (4, 4, '바닐라라떼', 4.50);
+
+INSERT INTO menu (menu_id,cafe_id,mname,price)
+VALUES (5, 6, '수박주스', 5.50);
+
+ALTER TABLE menu ADD description VARCHAR2(500);
+
+UPDATE menu
+SET description = '맛있어요'
+WHERE menu_id = 1 AND cafe_id = 1;
+
+UPDATE menu
+SET description = '달달해요'
+WHERE menu_id = 2 AND cafe_id = 2;
+
+UPDATE menu
+SET description = '맛없어요'
+WHERE menu_id = 3 AND cafe_id = 3;
+
+UPDATE menu
+SET description = '바나나맛나요'
+WHERE menu_id = 4 AND cafe_id = 4;
+
+UPDATE menu
+SET description = '수박맛나요~'
+WHERE menu_id = 5 AND cafe_id = 6;
+
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (6, 5, '아메리카노', 4.00, '매끈한 아메리카노 커피');
+
+-- menu 3
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (7, 2, '카페 라떼', 4.50, '부드러운 카페 라떼');
+
+-- menu 4
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (8, 7, '카푸치노', 4.50, '크림이 올라간 카푸치노');
+
+-- menu 5
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (9, 10, '아이스 커피', 3.75, '시원한 아이스 커피');
+
+-- menu 6
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (10, 8, '모카라떼', 5.00, '초콜릿 풍미의 모카라떼');
+
+-- menu 7
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (11, 9, '핫 초코렛', 4.25, '따뜻한 핫 초콜릿');
+
+-- menu 8
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (12, 13, '카페 아메리카노', 3.75, '매쁜한 카페 아메리카노');
+
+-- menu 9
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (13, 12, '카페 모카', 4.50, '모카풍미의 카페 모카');
+
+-- menu 10
+INSERT INTO menu (menu_id, cafe_id, mname, price, description)
+VALUES (14, 11, '바닐라 라떼', 4.25, '바닐라 향의 라떼');
+
+SELECT * FROM cafes WHERE address LIKE '%서울%';
+
+-- 메뉴가 아메리카노가 있는 카페 찾기 --
+SELECT c.NAME, m.mname
+FROM cafes c
+JOIN menu m ON c.cafe_id = m.cafe_id
+WHERE m.mname = '바닐라 라떼';
+
+-- 주말(토요일 OR 일요일)에 운영되는 카페 목록 --
+SELECT * FROM cafes 
+WHERE operating_hours LIKE '%주말%';
+
+-- 02를 포함하는 전화번호를 가지는 서울의 카페 찾기 --
+SELECT * FROM cafes
+WHERE phone_number LIKE '%02%'
+AND address LIKE '%서울%';
+
+--이름에 라떼가 포함된 카페 찾기 --
+SELECT * FROM MENU
+WHERE mname LIKE '%라떼%';
+
+-- 4.00 미만의 가격을 가진 메뉴 항목 찾기 --
+SELECT * FROM menu
+WHERE price < 4.00;
+
+-- 매일 운영되는 카페 찾기 --
+SELECT * FROM cafes
+WHERE OPERATING_HOURS LIKE '%매일%';
+
+-- 매일 운영되고 가격 4.00 미만의 가격을 가진 카페 찾기 (like and 쓰기) --
+SELECT *
+FROM cafes c
+JOIN menu M ON c.cafe_id = m.cafe_id
+WHERE c.OPERATING_HOURS LIKE '%매일%'
+AND m.price < 4.00;
+
+-- 대라는 이름을 가진 카페 찾기 --
+SELECT * FROM cafes
+WHERE cafes.NAME LIKE '%대%';
