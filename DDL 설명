@@ -5,6 +5,16 @@ DDL (Data Definition Language / 데이터정의)
 대표적인 명령문
 CREATE(생성), ALTER(수정), DROP(삭제), COMMENT(주석), GRANT(권한 부여), REVOKE(권한 제거), TRUNCATE(자료 버림)
 
+/* 23-10-10 추가 */
+ALTER TABLE 테이블이름 MODIFY(변경하고자하는 열의 이름 문자열유형(수정값 BYTE));
+
+예제코드 : 
+ALTER TABLE EMPLOYEE MODIFY(JOB VARCHER2(20 BYTE));
+코드설명 : 
+'EMPLOYEE' 테이블에서 'JOB' 열에 입력된 값이 열의 최대 길이를 초과하여
+문제가 발생했을 경우
+ALTER와 MODIFY를 작성하여 JOB 열의 크기를 20 BYTE로 변경할 수 있다.
+
 ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
   Oracle DataBase에서 "_ORACLE_SCRIPT" 모드 활성화 / 12C 이상 버전에서 사용할 수 있는 특별한 모드
 
