@@ -119,3 +119,34 @@ AND m.price < 4.00;
 -- 대라는 이름을 가진 카페 찾기 --
 SELECT * FROM cafes
 WHERE cafes.NAME LIKE '%대%';
+
+-- 모든 카페의 메뉴 항목 수 계산 --:
+SELECT COUNT(menu_id)
+FROM menu;
+
+SELECT c.name AS 카페명, COUNT(m.menu_id) AS 메뉴수
+FROM cafes c
+LEFT JOIN menu m ON c.cafe_id = m.cafe_id
+GROUP BY c.name;
+
+--메뉴 설명에 '아이스'가 포함된 카페 찾기:
+SELECT c.name, m.description
+FROM cafes c
+JOIN menu m ON c.cafe_id = m.cafe_id
+WHERE m.description LIKE '%바닐라%';
+
+--각 카페별 모든 메뉴 항목의 총 가격 계산:
+SELECT SUM(price)
+FROM menu;
+
+SELECT c.name AS 카페명, SUM(m.price) AS 총가격
+FROM cafes c
+JOIN menu m ON c.cafe_id = m.cafe_id
+GROUP BY c.name;
+
+--'초콜릿'이 설명에 포함된 메뉴 항목이 있는 카페 선택:
+SELECT c.name, m.description
+FROM cafes c
+JOIN menu m ON c.cafe_id = m.cafe_id
+WHERE description LIKE '%초콜릿%';
+
