@@ -1,0 +1,36 @@
+Schema(스키마)
+  데이터 구조를 정의하고 구성하는데 사용되는 개념
+  데이터베이스 내의 테이블, 뷰, 인덱스, 프로시저 및 관련 객체에 대한 논리적인 설계구조 정의
+  데이터베이스 객체 간의 관계와 제약 사항을 포함할 수 있음
+
+데이터 구조 정의 : 테이블, 열, 관계, 제약조건 등의 구조를 정의
+                  데이터가 어떻게 구성되고 저장되는지 결정할 수 있음
+
+보안 및 접근 제어 : 객체에 대한 접근 권한과 권한을 관리하며 데이터베이스의 보안을 강화
+
+데이터 일관성 유지 : 정의된 제약 조건과 규칙은 데이터의 일관성을 유지
+                    부적절한 데이터 입력을 방지하는데 도움을 줌
+
+데이터 베이스 개발 및 유지 : 객체 및 구조를 관리하며, 데이터 모델의 진화를 가능하게 함
+
+예제코드 :
+ 1. 테이블 정의
+  CREATE TABLE Book(
+    BOOK_ID IN PRIMARY KEY,
+    TITLE VARCHAR2(255)
+  );
+
+ 2. 테이블 간의 관계 정의
+  FOREIN KEY 사용
+
+ 3. 뷰 정의
+    CREATE VIEW ORDER AS 
+      SELECT o.* FROM ORDER o
+      JOIN CUSTM c ON o.CUSTOM_id = c.CUSTOM_ID;
+
+ 4. 제약조건 정의
+    LLTER TABLE BOOK ADD 
+    CONSTRAINT c.price CHECK (price > 0)
+
+ 5. 인덱스 정의
+    CREATE INDEX idx_title ON BOOK(TITLE);0
