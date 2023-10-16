@@ -1,0 +1,8 @@
+sqlplus sys/oracle as sysdba
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+CREATE USER khbank;IDENTIFIED BY kh1234;
+GRANT CREATE SESSION TO khbank;
+GRANT CREATE ANY TABLE TO khbank;
+GRANT connect, resource, dba to khbank;
+
+git config --global core.quotepath false  // 한글깨짐 해결
