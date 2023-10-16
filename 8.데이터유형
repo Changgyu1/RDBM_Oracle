@@ -17,6 +17,13 @@
     정수와 소수를 모두 저장할 수 있음
     EX) NUMBER(10,2) 총 10자리 숫자를 표현하고 / 소수점 이하 2자리까지 값을 저장할 수 있음
 
+DECIMAL
+	정수부분과 소수부분으로 구성된 숫자를 저장
+할 수 있는 데이터 형식
+
+DECIMAL = NUMBER
+ 표준	     Oracle
+
 LOB(Large OBject : 대용량 객체) 데이터 유형
     텍스트나 이진 데이터와 같은 대량의 데이터를 저장하는데 사용
     종류 - CLOB, BLOB
@@ -27,3 +34,4 @@ CLOB(Character Large OBject):
 BLOB(Binary Large OBject):
     바이너리 데이터(이진 데이터)를 저장하는데 사용
     이미지, 비디오, 오디오, 압축된 파일 등과 같은 이진 형식의 데이터를 저장하는데 적합
+
